@@ -7,11 +7,16 @@ import { FavoriteDirective } from './favorite.directive';
 import { CategoryListPipe } from './category-list.pipe';
 import { MediaItemFormComponent } from './media-item-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { lookupLists, lookupListToken } from './providers';
+import {HttpClientModule} from '@angular/common/http'
+
+
 
 @NgModule({
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
@@ -21,8 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryListPipe,
     MediaItemFormComponent
   ],
+  providers: [
+    {provide: lookupListToken, useValue: lookupLists}
+
+  ],
   bootstrap: [
     AppComponent
-  ]
+  ],
 })
 export class AppModule {}
